@@ -63,15 +63,18 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <div className="flex-1 relative bg-gradient-to-br from-blue-50 to-gray-100 p-4">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-20 w-64 h-64 bg-primary rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
-        </div>
+      <div className="flex-1 relative">
+        <iframe
+          src="https://fantastic-game.ru/openprovincemap/"
+          className="absolute inset-0 w-full h-full border-0"
+          title="Карта"
+          allow="geolocation"
+        />
 
-        <div className="relative z-10 max-w-md mx-auto space-y-4 animate-fade-in">
+        <div className="absolute top-0 left-0 right-0 z-10 max-w-md mx-auto p-4 space-y-4 animate-fade-in pointer-events-none">
+          <div className="pointer-events-auto">
           {(status === 'search' || status === 'selecting') && (
-            <Card className="p-6 shadow-lg">
+            <Card className="p-6 shadow-xl backdrop-blur-sm bg-white/95">
               <h1 className="text-2xl font-bold mb-6 text-foreground">Заказ такси</h1>
               
               <div className="space-y-4">
@@ -108,7 +111,7 @@ export default function Index() {
           )}
 
           {status === 'selecting' && (
-            <Card className="p-6 shadow-lg animate-slide-up">
+            <Card className="p-6 shadow-xl backdrop-blur-sm bg-white/95 animate-slide-up">
               <h2 className="text-xl font-bold mb-4">Выберите тариф</h2>
               
               <div className="space-y-3">
@@ -150,7 +153,7 @@ export default function Index() {
           )}
 
           {status === 'waiting' && (
-            <Card className="p-6 shadow-lg animate-slide-up">
+            <Card className="p-6 shadow-xl backdrop-blur-sm bg-white/95 animate-slide-up">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-bold">Водитель найден</h2>
                 <Badge className="bg-green-500 text-white">В пути</Badge>
@@ -191,7 +194,7 @@ export default function Index() {
           )}
 
           {status === 'riding' && (
-            <Card className="p-6 shadow-lg animate-slide-up">
+            <Card className="p-6 shadow-xl backdrop-blur-sm bg-white/95 animate-slide-up">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-bold">В пути</h2>
                 <Badge className="bg-blue-500 text-white">Едем</Badge>
@@ -229,7 +232,7 @@ export default function Index() {
           )}
 
           {status === 'completed' && (
-            <Card className="p-6 shadow-lg animate-slide-up text-center">
+            <Card className="p-6 shadow-xl backdrop-blur-sm bg-white/95 animate-slide-up text-center">
               <div className="w-20 h-20 bg-green-500 rounded-full mx-auto mb-4 flex items-center justify-center">
                 <Icon name="Check" size={40} className="text-white" />
               </div>
@@ -260,10 +263,11 @@ export default function Index() {
               </div>
             </Card>
           )}
+          </div>
         </div>
       </div>
 
-      <nav className="bg-white border-t border-border shadow-lg">
+      <nav className="bg-white/95 backdrop-blur-sm border-t border-border shadow-lg relative z-20">
         <div className="max-w-md mx-auto flex justify-around py-3">
           <button className="flex flex-col items-center gap-1 px-6 py-2 text-primary">
             <Icon name="Home" size={24} />
