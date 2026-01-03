@@ -1,0 +1,30 @@
+{
+  "tests": [
+    {
+      "name": "Auth - create new user",
+      "method": "POST",
+      "path": "/?action=auth",
+      "body": {
+        "phone": "+79001111111",
+        "name": "Тестовый Пользователь",
+        "role": "passenger"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "id": "number",
+        "phone": "string",
+        "name": "string",
+        "role": "string",
+        "rating": "number"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Get notifications",
+      "method": "GET",
+      "path": "/?action=notifications&user_id=1",
+      "expectedStatus": 200,
+      "bodyMatcher": "partial"
+    }
+  ]
+}
